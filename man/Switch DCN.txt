@@ -43,7 +43,10 @@
  - с Коммутатора на Комп. В корневую папку TFTP-сервера "/var/lib/tftpbooot"
 (Коммутатор должен быть подключен либо патчкордом либо по телнету, iP-задан от локальный либо сетевой)
 
-	copy startup.cfg tftp://192.168.254.132/conf/3900-10P.cfg
+	sudo ip addr add 172.16.105.222/24 dev enp4s0
+
+	copy startup.cfg tftp://192.168.254.132/on_object/3900-28P.cfg
+	copy startup.cfg tftp://192.168.254.132/on_object/3900-10P.cfg
 
  - TFTP команда для копирования ФАЙЛОВ в корневой каталог tftp с диска.
 
@@ -55,10 +58,10 @@
 	conf
 	interface vlan 172
         ip address 172.16.105.222 255.255.255.0
-	ip default-gateway 172.16.105.254
 	exit
 	
-	conf
+	ip default-gateway 172.16.105.254
+		
 	hostname Bul_Pob_6a_p555
 	sysLocation Bul_Pob_6a_p555
 	exit
@@ -76,16 +79,29 @@
 	switchport hybrid allowed vlan 4094 untag
 	switchport hybrid native vlan 4094
 	exit
+	
+Сбросить
+	conf
+	Interface Ethernet1/0/2
+	no switchport mode
+	no switchport hybrid allowed vlan
+	no switchport hybrid native vlan
+	exit
 
 UPLINK порт (порт в сторону вышестоящего коммутатора от которого получаем интернет)
 	conf
-	Interface Ethernet1/0/2
+	Interface Ethernet1/0/24
 	switchport mode hybrid
 	switchport hybrid allowed vlan 172-175 tag
 	exit
-
-
 	
+Сбросить
+        conf
+	Interface Ethernet1/0/24
+	no switchport mode
+	no switchport hybrid allowed vlan
+	exit
+
 *) Пример настройки скорости Ethernet интерфейса
 
 	Перевод SFP интерфейса в режиме 100BaseX (100mb/s)
