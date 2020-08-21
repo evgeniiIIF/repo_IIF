@@ -53,7 +53,11 @@
         ip address 172.16.105.145 255.255.255.0
 	ip default-gateway 172.16.105.254
 	exit
+	
+	conf
 	hostname Bul_Pob_6a_p555
+	sysLocation Bul_Pob_6a_p555
+	exit
 
 4) Работа с vlan
 
@@ -67,12 +71,14 @@
 	switchport hybrid allowed vlan 172-175 tag
 	switchport hybrid allowed vlan 4094 untag
 	switchport hybrid native vlan 4094
+	exit
 
 UPLINK порт (порт в сторону вышестоящего коммутатора от которого получаем интернет)
 	conf
 	Interface Ethernet1/0/2
 	switchport mode hybrid
 	switchport hybrid allowed vlan 172-175 tag
+	exit
 
 
 	
