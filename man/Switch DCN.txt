@@ -29,6 +29,118 @@
 
 	copy tftp://192.168.1.111/nos/S3900-342.img nos.img
 	
+	cd /var/lib/tftpboot/conf/ 
+	copy tftp://192.168.1.111/conf/3900-28.cfg startup.cfg
+	copy tftp://192.168.1.111/conf/3900-10.cfg startup.cfg
+	
+	reload - перезагрузить коммутатор.
+	write - записать из оперативки в startup.cfg
+
+ - с Коммутатора на Комп. В корневую папку TFTP-сервера "/var/lib/tftpbooot"
+(Коммутатор должен быть подключен либо патчкордом либо по телнету, iP-задан от локальный либо сетевой)
+
+	copy startup.cfg tftp://192.168.254.132/conf/3900-10P.cfg
+
+ - TFTP команда для копирования ФАЙЛОВ в корневой каталог tftp с диска.
+
+	$ tftp localhost - вызов командной строки tftp
+	tftp> put /home/evgenii/git_Hub/repo_IIF/eltex/ФАЙЛ.cfg имя_в_корневом каталоге - положить из репо в tftpboot.
+	Ctrl + Z - выход.
+
+3) Задать IP адресс на vlan и шлюз по умолчанию и hostname
+	conf
+	interface vlan 172
+        ip address 172.16.105.145 255.255.255.0
+	ip default-gateway 172.16.105.254
+	exit
+	hostname Bul_Pob_6a_p555
+
+4) Работа с vlan
+
+	vlan 4094
+	exit
+
+Акцессный порт
+	conf
+	Interface Ethernet1/0/2
+	switchport mode hybrid
+	switchport hybrid allowed vlan 172-175 tag
+	switchport hybrid allowed vlan 4094 untag
+	switchport hybrid native vlan 4094
+
+UPLINK порт (порт в сторону вышестоящего коммутатора от которого получаем интернет)
+	conf
+	Interface Ethernet1/0/2
+	switchport mode hybrid
+	switchport hybrid allowed vlan 172-175 tag
+
+
+	
+*) Пример настройки скорости Ethernet интерфейса
+
+	Перевод SFP интерфейса в режиме 100BaseX (100mb/s)
+	SNR-S2985G-24T#conf
+	SNR-S2985G-24T(config)#interface ethernet 1/0/25
+	SNR-S2985G-24T(config-if-ethernet1/0/25)#speed-duplex force100-fx
+
+	Настройка автоопределения скорости 10/100 mb/s, duplex auto на гигабитном интерфейсе
+	SNR-S2985G-24T#conf
+	SNR-S2985G-24T(config)#interface ethernet 1/0/24
+	SNR-S2985G-24T(config-if-ethernet1/0/24)#speed-duplex auto 10 100 auto
+	
+	Перевод интерфейса 1/0/1 в режим 100 мб/c full-duplex
+	SNR-S2985G-24T#conf
+	SNR-S2985G-24T(config)#interface ethernet 1/0/1
+	SNR-S2985G-24T(config-if-ethernet1/0/1)#speed-duplex force100-full
+	
+	Возврат настроек интерфейса к значению по умолчанию (автоматическое согласование скорости/дуплекса)
+	SNR-S2985G-24T(config-if-ethernet1/0/1)#no speed-duplex
+
+*) Инфо
+	show mac-address-table                                  - какой порт относится к какому vlan
+	show interface ethernet 1/0/8				- вкл. или выкл. порт, пакеты входящ и исходыщие
+
+
+
+
+
+
+
+
+
+
+
+
+
+1) Подключение к коммутатору. - через Console (sudo screen -r -d  разверуть скрин) - через telnet
+	
+	/usr/bin/sudo /usr/bin/screen /dev/ttyUSB0 9600 
+	telnet 192.168.X.X 
+
+ - Посмотреть: Vlan MAC, SoftWare Version.
+
+	show version
+
+ - Копируем папку с прошивкаи из репозитория GitHub в корневую папку TFTP-сервервера (переименовываем в NOS).
+
+	cp -r 3900/ /var/lib/tftpbooot/nos
+
+ - Посмотреть файлы прошивки nos.img и стартап-конфигурации startup.cfg.
+
+	dir	 или 	show flash
+ 
+ - Задать ip на Vlan1 (для pinga с компом, для возможности передачи файлов по tftp)
+ 
+ 	interface vlan 1
+	ip address 192.168.1.1 255.255.255.0
+	
+2) TFTP передача прошивки и конфигов
+
+ - с Компа на Коммутатор. C корневой папки TFTP-сервера "/var/lib/tftpbooot". 
+   (Коммутатор должен быть подключен либо патчкордом либо по телнету, iP-задан от локальный либо интернет сетевой карты.)
+
+	copy tftp://192.168.1.111/nos/S3900-342.img nos.img
+	
 	cd /var/lib/tftpboot/conf/                                     -сконфигурировать hostname IP шлюз
 	copy tftp://192.168.1.111/conf/3900-28.cfg startup.cfg
 	
