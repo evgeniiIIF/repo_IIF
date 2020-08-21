@@ -19,16 +19,20 @@
  
  - Задать ip на Vlan1 (для pinga с компом, для возможности передачи файлов по tftp)
  
+ 	conf
  	interface vlan 1
 	ip address 192.168.1.1 255.255.255.0
+	exit
 	
 2) TFTP передача прошивки и конфигов
 
  - с Компа на Коммутатор. C корневой папки TFTP-сервера "/var/lib/tftpbooot". 
    (Коммутатор должен быть подключен либо патчкордом либо по телнету, iP-задан от локальный либо интернет сетевой карты.)
-
+	
+	ПРОШИВКА
 	copy tftp://192.168.1.111/nos/S3900-342.img nos.img
 	
+	КОНФИГ
 	cd /var/lib/tftpboot/conf/ 
 	copy tftp://192.168.1.111/conf/3900-28.cfg startup.cfg
 	copy tftp://192.168.1.111/conf/3900-10.cfg startup.cfg
@@ -50,7 +54,7 @@
 3) Задать IP адресс на vlan и шлюз по умолчанию и hostname
 	conf
 	interface vlan 172
-        ip address 172.16.105.145 255.255.255.0
+        ip address 172.16.105.222 255.255.255.0
 	ip default-gateway 172.16.105.254
 	exit
 	
