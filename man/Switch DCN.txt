@@ -77,9 +77,9 @@
 
 Акцессный порт
 	conf
-	Interface Ethernet1/0/2
+	Interface Ethernet1/0/7
 	switchport mode hybrid
-	switchport hybrid allowed vlan 172-175 tag
+	switchport hybrid allowed vlan 172-175;4094 tag
 	switchport hybrid allowed vlan 4094 untag
 	switchport hybrid native vlan 4094
 	exit
@@ -96,7 +96,7 @@ UPLINK порт (порт в сторону вышестоящего комму�
 	conf
 	Interface Ethernet1/0/7
 	switchport mode hybrid
-	switchport hybrid allowed vlan 172-175 tag
+	switchport hybrid allowed vlan 172-175;4094 tag
 	exit
 	
 Сбросить
