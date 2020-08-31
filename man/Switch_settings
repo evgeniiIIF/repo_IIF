@@ -1,0 +1,15 @@
+Создать пользователя.
+
+    configure terminal
+    username admin privilege 15 secret poroL
+    end
+    sh run | include username
+    sh run | include ip
+  
+Удалить пользователя  
+    no username admin1
+  
+Сохранить рун в старт конфиг
+    copy running-config startup-config
+  
+show ip interface brief 
