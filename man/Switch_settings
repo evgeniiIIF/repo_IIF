@@ -3,8 +3,12 @@
     configure terminal
     username admin privilege 15 secret poroL
     end
+    
     sh run | include username
     sh run | include ip
+    
+Пороль для превелегированного режима.
+    enable secret porol
   
 Удалить пользователя  
     no username admin1
@@ -21,6 +25,14 @@
     line vty 0 4
     password cisco
     transport input telnet
-    transport input telnet ssh
     end
     
+    show run | section line vty 0 4
+
+Посмотреть флэш
+    dir nvram
+Сохранить настройки в стартап.
+    copy running-config startup-config 
+____________________________________________
+
+
