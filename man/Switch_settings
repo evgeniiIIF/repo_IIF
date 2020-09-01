@@ -6,6 +6,7 @@
     
     sh run | include username
     sh run | include ip
+    sh run | section interface FastEthernet
     
 Пороль для превелегированного режима.
     enable secret porol
@@ -34,5 +35,8 @@
 Сохранить настройки в стартап.
     copy running-config startup-config 
 ____________________________________________
+
+Установить время
+    clock set 14:02:00 1 SEPTEMBER 2020
 
 
