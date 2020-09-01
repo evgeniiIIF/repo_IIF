@@ -6,7 +6,7 @@
     
     sh run | include username
     sh run | include ip
-    sh run | section interface FastEthernet
+    sh run | section interface FastEthernet |!|line - просмотр конвеером
     
 Пороль для превелегированного режима.
     enable secret porol
@@ -38,5 +38,8 @@ ____________________________________________
 
 Установить время
     clock set 14:02:00 1 SEPTEMBER 2020
+    
+Чтобы не зависало при вводе неправильной комманды 
+    no ip domain-lookup
 
 
