@@ -11,5 +11,16 @@
   
 Сохранить рун в старт конфиг
     copy running-config startup-config
-  
-show ip interface brief 
+
+Посмотреть ip и состояние портов
+    show ip interface brief 
+
+Настройка telnet ssh
+    
+    conf t
+    line vty 0 4
+    password cisco
+    transport input telnet
+    transport input telnet ssh
+    end
+    
