@@ -2,7 +2,7 @@
 
 1) Подключение к коммутатору. - через Console (sudo screen -r -d  разверуть скрин) - через telnet
 	
-	/usr/bin/sudo /usr/bin/screen /dev/ttyUSB0 9600 
+	/usr/bin/sudo /usr/bin/screen /dev/ttyUSB0 9600 115200
 	telnet 192.168.X.X 
 
  - Посмотреть: Vlan MAC, SoftWare Version.
