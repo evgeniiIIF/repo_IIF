@@ -19,6 +19,7 @@
 
 Посмотреть ip и состояние портов
     show ip interface brief 
+    show ip interface brief | exclude FastEthernet0/24 - исключить из вывода FastEthernet0/24
 
 Настройка telnet ssh
     
@@ -41,5 +42,14 @@ ____________________________________________
     
 Чтобы не зависало при вводе неправильной комманды 
     no ip domain-lookup
+    
+Сбросить настройки по умолчанию
+    default interface FastEthernet 0/4
+    
+Показать историю комманд
+     show history
+     
+
+    
 
 
