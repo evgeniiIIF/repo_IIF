@@ -78,10 +78,15 @@
 Акцессный порт
 	conf
 	Interface Ethernet1/0/7
+	storm-control broadcast 128
+ 	storm-control multicast 128
 	switchport mode hybrid
 	switchport hybrid allowed vlan 172-175 tag
 	switchport hybrid allowed vlan 4094 untag
 	switchport hybrid native vlan 4094
+	loopback-detection specified-vlan 1-4094
+ 	loopback-detection control shutdown
+ 	ip dhcp snooping action blackhole recovery 3600
 	exit
 	
 Сбросить
