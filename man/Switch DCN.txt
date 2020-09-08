@@ -95,13 +95,10 @@
 UPLINK порт (порт в сторону вышестоящего коммутатора от которого получаем интернет)
 	conf
 	Interface Ethernet1/0/1
-	storm-control broadcast 128
-	storm-control multicast 128
+	mls qos trust dscp
 	switchport mode hybrid
 	switchport hybrid allowed vlan 172-175;4094 tag
-	loopback-detection specified-vlan 1-4094
- 	loopback-detection control shutdown
- 	ip dhcp snooping action blackhole recovery 3600
+	ip dhcp snooping trust
 	exit
 	
 Сбросить
