@@ -89,6 +89,17 @@
  	ip dhcp snooping action blackhole recovery 3600
 	exit
 	
+	conf
+	Interface Ethernet1/0/7  
+	storm-control broadcast 128
+ 	storm-control multicast 128
+	switchport mode access
+	switchport access vlan 51
+	loopback-detection specified-vlan 1-4094
+ 	loopback-detection control shutdown
+ 	ip dhcp snooping action blackhole recovery 3600
+	exit
+	
 Сбросить
 	conf
 	Interface Ethernet1/0/2
