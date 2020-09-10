@@ -48,8 +48,28 @@ ____________________________________________
     
 Показать историю комманд
      show history
-     
+_____________________________________________
 
+Статус портов (вкл\выкл. vlan, duplex, speed, type)
+    show interfaces stat
+    show interfaces trunk 
+    show ip interface brief
+_____________________________________________
+
+Создать Vlan
+    vlan 100
+    name VOICE
+    exit
     
-
-
+    vlan 20,100-122,130
+    exit
+    
+Задать access Vlan порту
+    interface fa0/1
+    switchport mode access 
+    switchport access vlan 10
+    description to-PC1
+    
+    switchport voice vlan 100   - голосовой vlan
+    
+    
