@@ -51,9 +51,11 @@ ____________________________________________
 _____________________________________________
 
 Статус портов (вкл\выкл. vlan, duplex, speed, type)
-    show interfaces stat
+    show interfaces stat        - посмотреть порты conected, к какому vlans принадлежат
     show interfaces trunk 
-    show ip interface brief
+    show ip interface brief     - посмотреть состояние портов up down и vlans
+    show cdp neig               - посмотреть на каком порту подключено устройство, и в какой порт
+    show vlan brief
 _____________________________________________
 
 Создать Vlan
