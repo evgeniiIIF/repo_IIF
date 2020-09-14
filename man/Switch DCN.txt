@@ -39,8 +39,8 @@
 	КОНФИГ
 	write - записать из оперативки в startup.cfg
 	cd /var/lib/tftpboot/conf/ 
-	copy tftp://192.168.1.253/conf/3900-28.cfg startup.cfg
-	copy tftp://192.168.1.253/conf/3900-10.cfg startup.cfg
+	copy tftp://192.168.1.253/nos/3900/3900-28.cfg startup.cfg
+	copy tftp://192.168.1.253/nos/3900/3900-10.cfg startup.cfg
 	
 	reload - перезагрузить коммутатор.
 	
