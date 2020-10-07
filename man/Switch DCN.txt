@@ -1,5 +1,7 @@
 Настройка коммутатора DCN S3900E
 
+tcpdump ip -e -i enp4 - отфильтровать по ip, -e -показывать с какого влана трафиик.
+
 1) Подключение к коммутатору. - через Console (sudo screen -r -d  разверуть скрин) - через telnet
 	
 	/usr/bin/sudo /usr/bin/screen /dev/ttyUSB0 9600 115200
@@ -168,7 +170,8 @@ Interface Ethernet1/0/8
 *) Инфо
 	show mac-address-table                                  - какой порт относится к какому vlan
 	show interface ethernet 1/0/8				- вкл. или выкл. порт, пакеты входящ и исходыщие
-
+	show interface ethernet status				- статус портов, какому vlan пренадлежат
+	
 
 
 
