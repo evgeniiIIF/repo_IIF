@@ -171,7 +171,7 @@ Interface Ethernet1/0/8
 	show mac-address-table                                  - какой порт относится к какому vlan
 	show interface ethernet 1/0/8				- вкл. или выкл. порт, пакеты входящ и исходыщие
 	show interface ethernet status				- статус портов, какому vlan пренадлежат
-	
+	show run interface ethernet 1/0/7			- show run конкретного порта
 
 
 
